@@ -3,18 +3,75 @@ agent any
 stages {
 stage('clone') {
 steps {
-git branch:'main', url: '’;
+git branch:'main', url: 'https://github.com/SHIVARAM083/CalC.git’;
 }
 }
 stage('compile') {
 steps {
-sh 'javac Calculator.java'
+sh 'javac CALC.java'
 }
 }
 stage('build') {
 steps {
-sh 'java Calculator 25 5'
+sh 'java CALC 25 5'
+}
+}
+stage('test'){
+steps{
+sh 'java CALC 30 -5'
+}
+}
+stage('test'){
+steps{
+sh 'java CALC 30 6'
 }
 }
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
