@@ -1,77 +1,33 @@
 pipeline {
-agent any
-stages {
-stage('clone') {
-steps {
-git branch:'main', url: 'https://github.com/SHIVARAM083/CalC.git’;
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                // Fixed the smart quote at the end of the URL
+                git branch: 'main', url: 'https://github.com/SHIVARAM083/CalC.git'
+            }
+        }
+        stage('Compile') {
+            steps {
+                sh 'javac CALC.java'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'java CALC 25 5'
+            }
+        }
+        // Renamed to 'Test Negative' to avoid duplicate stage names
+        stage('Test Negative') { 
+            steps {
+                sh 'java CALC 30 -5'
+            }
+        }
+        // Renamed to 'Test Positive' to avoid duplicate stage names
+        stage('Test Positive') {
+            steps {
+                sh 'java CALC 30 6'
+            }
+        }
+    }
 }
-}
-stage('compile') {
-steps {
-sh 'javac CALC.java'
-}
-}
-stage('build') {
-steps {
-sh 'java CALC 25 5'
-}
-}
-stage('test'){
-steps{
-sh 'java CALC 30 -5'
-}
-}
-stage('test'){
-steps{
-sh 'java CALC 30 6'
-}
-}
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
