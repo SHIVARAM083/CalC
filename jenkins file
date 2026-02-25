@@ -9,24 +9,24 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                sh 'javac CALC.java'
+                sh 'python3 calc.py 6 7'
             }
         }
         stage('Build') {
             steps {
-                sh 'java CALC 25 5'
+                sh 'python3 calc.py 25 5'
             }
         }
         // Renamed to 'Test Negative' to avoid duplicate stage names
         stage('Test Negative') { 
             steps {
-                sh 'java CALC 30 -5'
+                sh 'python3 calc.py 30 -5'
             }
         }
         // Renamed to 'Test Positive' to avoid duplicate stage names
         stage('Test Positive') {
             steps {
-                sh 'java CALC 30 6'
+                sh 'python3 calc.py 30 6'
             }
         }
     }
